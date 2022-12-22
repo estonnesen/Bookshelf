@@ -1665,3 +1665,107 @@ const bookData = [
     title: "My twin puppies",
   },
 ];
+
+// Created this function to retrieve all the books in one go
+// and then create a variable from that executed function which
+// I can use to push into bookshelf or directly into the html
+function getAllBooks() {
+  let bookReturn = [];
+  for (let i = 0; i < bookData.length; i++) {
+    let book = bookData[i];
+    bookReturn.push(book)
+  }
+  return bookReturn
+}
+
+const allBooks = getAllBooks()
+console.log(getAllBooks())
+
+class Book {
+  constructor(author, language, subject, title) {
+    this.author = author;
+    this.language = language;
+    this.subject = subject;
+    this.title = title
+  }
+}
+
+//Bookshelf class that has empty constructor because it doesn't really contain any properties
+class Bookshelf {
+  constructor() {
+    this.books = [];
+  }
+
+  // created an addBook method here to add book instances
+  // into my bookshelf but couldn't get it to work the way I wanted
+  // so had to defer to different method
+  addBook() {
+    // this.books.push(newBook)
+    // let testBook = new Book('new entry', 'new entry', 'new entry', 'new entry')
+    // let bookList = document.createElement('ul');
+    // let newBook = document.createElement('li');
+    // newBook.innerHTML = testBook.title;
+    // bookList.appendChild(newBook);
+    // document.body.appendChild(bookList)
+  }
+// This function (called later via OOP) appends all the books into individual li's
+// from my allBooks variable by cylcing through it with a for loop and appending
+// each on into the html file
+  renderAllBooks() {
+    let parentEle = document.createElement("div");
+    let childEle = document.createElement("ul");
+    parentEle.appendChild(childEle);
+
+    for (let i = 0; i < allBooks.length; i++) {
+      let eachBook = document.createElement('li')
+      eachBook.innerHTML = allBooks[i].title;
+      childEle.appendChild(eachBook);
+    }
+
+    document.body.appendChild(parentEle);
+  }
+}
+
+// Made instance of Bookshelf to then fire off the renderAllBooks function I made within
+// which appends each book as a new li
+const createBookShelf = new Bookshelf()
+// createBookShelf.addBook()
+createBookShelf.renderAllBooks()
+
+
+// Using DOM I selected the button ID I made and set an
+// event to it to collect and append the data sumitted
+// to create a new book
+const addBtn = document.querySelector('#addABook')
+
+addBtn.addEventListener('click', function(event) {
+  event.preventDefault();
+  let userBook = [];
+  const inputAuth = document.querySelector('#Author')
+  userBook.push(inputAuth.value)
+  const inputLang = document.querySelector('#Language')
+  userBook.push(inputLang.value)
+  const inputSubj = document.querySelector('#Subject')
+  userBook.push(inputSubj.value)
+  const inputTitle = document.querySelector('#Title')
+  userBook.push(inputTitle.value)
+
+  let userOutput = document.querySelector('#formOutput');
+  let newBookItem = document.createElement('li');
+  newBookItem.innerHTML = userBook[3];
+  userOutput.appendChild(newBookItem)
+
+  // resets the form input box every time the button is clicked
+  inputAuth.value = ''
+  inputLang.value = ''
+  inputSubj.value = ''
+  inputTitle.value = ''
+  // console.log(userBook)
+})
+
+
+// ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
+// const bookImage = document.querySelector('li')
+
+// bookImage.addEventListener('click', function() {
+// })
