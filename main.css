@@ -71,3 +71,8 @@ li{
 div{
     background-color: antiquewhite;
 }
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+  }
