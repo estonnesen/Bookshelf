@@ -1666,9 +1666,12 @@ const bookData = [
   },
 ];
 
-// Created this function to retrieve all the books in one go
-// and then create a variable from that executed function which
-// I can use to push into bookshelf or directly into the html
+// console.log(Object.keys(bookData))
+
+// // Created this function to retrieve all the books in one go
+// // and then create a variable from that executed function which
+// // I can use to push into bookshelf or directly into the html
+
 function getAllBooks() {
   let bookReturn = [];
   for (let i = 0; i < bookData.length; i++) {
@@ -1690,15 +1693,15 @@ class Book {
   }
 }
 
-//Bookshelf class that has empty constructor because it doesn't really contain any properties
+// //Bookshelf class that has empty constructor because it doesn't really contain any properties
 class Bookshelf {
   constructor() {
     this.books = [];
   }
 
-  // created an addBook method here to add book instances
-  // into my bookshelf but couldn't get it to work the way I wanted
-  // so had to defer to different method
+//   // created an addBook method here to add book instances
+//   // into my bookshelf but couldn't get it to work the way I wanted
+//   // so had to defer to different method
   addBook() {
     // this.books.push(newBook)
     // let testBook = new Book('new entry', 'new entry', 'new entry', 'new entry')
@@ -1708,9 +1711,10 @@ class Bookshelf {
     // bookList.appendChild(newBook);
     // document.body.appendChild(bookList)
   }
-// This function (called later via OOP) appends all the books into individual li's
-// from my allBooks variable by cylcing through it with a for loop and appending
-// each on into the html file
+  
+// // This function (called later via OOP) appends all the books into individual li's
+// // from my allBooks variable by cylcing through it with a for loop and appending
+// // each on into the html file
   renderAllBooks() {
     let parentEle = document.createElement("div");
     let childEle = document.createElement("ul");
@@ -1726,16 +1730,17 @@ class Bookshelf {
   }
 }
 
-// Made instance of Bookshelf to then fire off the renderAllBooks function I made within
-// which appends each book as a new li
+// // Made instance of Bookshelf to then fire off the renderAllBooks function I made within
+// // which appends each book as a new li
 const createBookShelf = new Bookshelf()
 // createBookShelf.addBook()
 createBookShelf.renderAllBooks()
 
 
-// Using DOM I selected the button ID I made and set an
-// event to it to collect and append the data sumitted
-// to create a new book
+// // Using DOM I selected the button ID I made and set an
+// // event to it to collect and append the data sumitted
+// // to create a new book
+
 const addBtn = document.querySelector('#addABook')
 
 addBtn.addEventListener('click', function(event) {
@@ -1764,8 +1769,8 @@ addBtn.addEventListener('click', function(event) {
 })
 
 
-// ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
-// const bookImage = document.querySelector('li')
+// // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
+// // const bookImage = document.querySelector('li')
 
-// bookImage.addEventListener('click', function() {
-// })
+// // bookImage.addEventListener('click', function() {
+// // })
