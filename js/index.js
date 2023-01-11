@@ -14,7 +14,7 @@ class Bookshelf {
     bookshelfRender() {
       const booksContainer = document.createElement('div');
       booksContainer.classList.add('books-container')
-      // bookshelfDiv.appendChild(booksContainer);
+      body.append(booksContainer)
     
       this.books.map((eachBook)=>{
         // const newBook = eachBook.renderBook()
@@ -47,18 +47,18 @@ class Bookshelf {
   
       return booksContainer
     }
-  
-    bookShelfSort(){
-      bookData.sort((a, b)=>{
-        if(a.author < b.author){
-          return -1
-        }
-        if(a.author > b.author) {
-          return 1
-        }
-        return 0
-      })
-    }
+
+    bookshelfSort() {
+        this.books.sort((a, b)=>{
+          if(a.author < b.author){
+            return -1
+          }
+          if(a.author > b.author) {
+            return 1
+          }
+          return 0
+        })
+      }
   }
 
   class Book {
@@ -72,8 +72,6 @@ class Bookshelf {
     // rendering a NEW book
       renderBook(eachBook) {
           const booksContainer = document.querySelector('.books-container'); // ref to master bookshelf list
-
-        //   const firstBook = myBookshelf.books[0]
 
           const newContainer = document.createElement('ul')
           newContainer.classList.add('new-container')
@@ -101,39 +99,30 @@ class Bookshelf {
 
           return booksContainer;
       }
-      // bookData.map((singleObj) => {
-      //   console.log(singleObj);
-      //   const card = cardMaker(singleObj);
-      //   body.append(card);
-      // });
-  
     }
   
   
   // // Made instance of Bookshelf to then fire off the renderAllBooks function I made within
   // // which appends each book as a new li
 
-  // bookData.map((obj)=>{
-  //   books.addBook(obj)
-  // })
-  
-  // books.renderBook();
+//   ***OLD WAY I RENDERED INITIAL BOOKSHELF**
+//   bookData.map((book)=>{
+//     myBookshelf.addBook(book)
+//   })
+
+
+// RENDER INITIAL BOOKSHELF
   const myBookshelf = new Bookshelf();
-  bookData.map((book)=>{
+  bookData.forEach((book)=>{
+    book = new Book(book.author, book.language, book.subject, book.title)
     myBookshelf.addBook(book)
   })
-
-  const bookshelfDiv = document.createElement('div');
-  bookshelfDiv.classList.add('bookshelf_div')
-  body.append(myBookshelf.bookshelfRender());
+    console.log(myBookshelf)
+    myBookshelf.bookshelfRender()
 
   // Calling the sort function
-  myBookshelf.bookShelfSort()
+//   myBookshelf.bookShelfSort()
   
-  
-  // createBookShelf.addBook()
-//   console.log(myBookshelf.bookShelfSort());
-  // createBookShelf.renderAllBooks();
   
   // // Using DOM I selected the button ID I made and set an
   // // event to it to collect and append the data sumitted
@@ -164,8 +153,17 @@ class Bookshelf {
     inputLang.value = "";
     inputSubj.value = "";
     inputTitle.value = "";
-    // console.log(userBook)
   });
+
+  const sortBtn = document.querySelector('#sort-button')
+  
+  sortBtn.addEventListener("click", function () {
+    
+    console.log(myBookshelf)
+        // myBookshelf.bookshelfSort()
+      });
+
+  
   
   
   // // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
