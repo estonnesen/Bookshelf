@@ -75,7 +75,7 @@ class Bookshelf {
 
           const newContainer = document.createElement('ul')
           newContainer.classList.add('new-container')
-          booksContainer.append(newContainer)
+          booksContainer.prepend(newContainer)
 
           const authorLi = document.createElement('li')
           authorLi.classList.add('author')
@@ -118,16 +118,14 @@ class Bookshelf {
     myBookshelf.addBook(book)
   })
     console.log(myBookshelf)
-    myBookshelf.bookshelfRender()
+    // myBookshelf.bookshelfRender()
 
   // Calling the sort function
 //   myBookshelf.bookShelfSort()
   
   
-  // // Using DOM I selected the button ID I made and set an
-  // // event to it to collect and append the data sumitted
-  // // to create a new book
-  
+//   **** ADD BOOK BUTTON SECTION ****
+
   const addBtn = document.querySelector("#addABook");
   
   addBtn.addEventListener("click", function (event) {
@@ -142,11 +140,9 @@ class Bookshelf {
     const inputTitle = document.querySelector("#Title");
     newBook.title = inputTitle.value
     
-    myBookshelf.addBook(newBook)
-    newBook.renderBook(newBook)
-
+    myBookshelf.addBook(newBook) // adds to the actual array of books
+    newBook.renderBook(newBook) // renders new book into html via DOM
     console.log(myBookshelf)
-    console.log(newBook)
 
     // resets the form input box every time the button is clicked
     inputAuth.value = "";
@@ -157,14 +153,15 @@ class Bookshelf {
 
   const sortBtn = document.querySelector('#sort-button')
   
-  sortBtn.addEventListener("click", function () {
-    
-    console.log(myBookshelf)
-        // myBookshelf.bookshelfSort()
-      });
+sortBtn.addEventListener("click", function () {
+    const booksContainer = document.querySelector('.books-container')
+    booksContainer.remove() // removes the original book list I rendered
+    // console.log(myBookshelf)
+    myBookshelf.bookshelfSort() // this sorts just the array of books including those that were added
+    myBookshelf.bookshelfRender() // now we re-render the bookshelf
+});
 
-  
-  
+myBookshelf.bookshelfRender()
   
   // // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
   // // const bookImage = document.querySelector('li')
