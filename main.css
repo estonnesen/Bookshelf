@@ -46,30 +46,33 @@ button{
 
 ul{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    margin: 0px;
+    margin: 25px;
 }
 
 /* CREATE BACKGROUND AND BORDER COLOR FONTS ETC FOR EACH BOOK */
 li{
     display: flex;
     align-items: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: large;
-    font-weight: bolder;
-    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-size: large; */
+    /* font-weight: bolder; */
+    /* text-transform: uppercase; */
     list-style: none;
     background-color: orange;
     border: solid brown 1px;
-    box-shadow: 3px 3px grey;
-    min-height: 40px;
-    padding: 8px;
-    min-width: 250px;
-    width: 45%;
+    box-shadow: 2px 2px grey;
+    /* min-height: 22px; */
+    padding: 5px;
+    /* min-width: 250px; */
+    /* width: 45%; */
     margin: 5px;
 }
-div{
+.new-container{
     background-color: antiquewhite;
+    border: solid 1px black;
+    padding: 10px;
 }
 
 .dropdown {

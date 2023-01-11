@@ -1,27 +1,176 @@
-// class Bookshelf {
-//     constructor(books) {
-//         this.books = books
-//     }
+import { bookData } from "./book-data.js";
 
-//     addBooks(newBooks) {
-//         this.books.push(newBooks)
-//     }
-// }
+const body = document.querySelector('body')
 
-// const bookShelf = new Bookshelf(books = []);
+class Bookshelf {
+    constructor() {
+      this.books = [];
+    }
+  
+    addBook(book) {
+      this.books.push(book)
+    }
+  
+    bookshelfRender() {
+      const booksContainer = document.createElement('div');
+      booksContainer.classList.add('books-container')
+      // bookshelfDiv.appendChild(booksContainer);
+    
+      this.books.map((eachBook)=>{
+        // const newBook = eachBook.renderBook()
+        // booksContainer.append(newBook)
+  
+        const newContainer = document.createElement('ul')
+        newContainer.classList.add('new-container')
+        booksContainer.append(newContainer)
+  
+        const authorLi = document.createElement('li')
+        authorLi.classList.add('author')
+        authorLi.innerText = eachBook.author
+        newContainer.appendChild(authorLi)
+  
+        const languageLi = document.createElement('li')
+        languageLi.classList.add('language')
+        languageLi.innerText = eachBook.language
+        newContainer.appendChild(languageLi)
+  
+        const subjectLi = document.createElement('li')
+        subjectLi.classList.add('subject')
+        subjectLi.innerText = eachBook.subject
+        newContainer.appendChild(subjectLi)
+  
+        const titleLi = document.createElement('li')
+        titleLi.classList.add('title')
+        titleLi.innerText = eachBook.title
+        newContainer.appendChild(titleLi)
+      })
+  
+      return booksContainer
+    }
+  
+    bookShelfSort(){
+      bookData.sort((a, b)=>{
+        if(a.author < b.author){
+          return -1
+        }
+        if(a.author > b.author) {
+          return 1
+        }
+        return 0
+      })
+    }
+  }
 
-// bookShelf.addBooks("Here's a new book")
-// bookShelf.addBooks("Here's another new book")
+  class Book {
+    constructor(author, language, subject, title) {
+      this.author = author;
+      this.language = language;
+      this.subject = subject;
+      this.title = title;
+    }
+    
+    // rendering a NEW book
+      renderBook(eachBook) {
+          const booksContainer = document.querySelector('.books-container'); // ref to master bookshelf list
 
-// console.log(bookShelf)
+        //   const firstBook = myBookshelf.books[0]
 
-// class Books {
-//     constructor(author, language, subject, title) {
-//         this.author = author;
-//         this.language = language;
-//         this.subject = subject;
-//         this.title = title
-//     }
-// }
+          const newContainer = document.createElement('ul')
+          newContainer.classList.add('new-container')
+          booksContainer.append(newContainer)
 
-import {bookData} from 'js/book-data.js'
+          const authorLi = document.createElement('li')
+          authorLi.classList.add('author')
+          authorLi.innerText = eachBook.author
+          newContainer.appendChild(authorLi)
+
+          const languageLi = document.createElement('li')
+          languageLi.classList.add('language')
+          languageLi.innerText = eachBook.language
+          newContainer.appendChild(languageLi)
+
+          const subjectLi = document.createElement('li')
+          subjectLi.classList.add('subject')
+          subjectLi.innerText = eachBook.subject
+          newContainer.appendChild(subjectLi)
+
+          const titleLi = document.createElement('li')
+          titleLi.classList.add('title')
+          titleLi.innerText = eachBook.title
+          newContainer.appendChild(titleLi)
+
+          return booksContainer;
+      }
+      // bookData.map((singleObj) => {
+      //   console.log(singleObj);
+      //   const card = cardMaker(singleObj);
+      //   body.append(card);
+      // });
+  
+    }
+  
+  
+  // // Made instance of Bookshelf to then fire off the renderAllBooks function I made within
+  // // which appends each book as a new li
+
+  // bookData.map((obj)=>{
+  //   books.addBook(obj)
+  // })
+  
+  // books.renderBook();
+  const myBookshelf = new Bookshelf();
+  bookData.map((book)=>{
+    myBookshelf.addBook(book)
+  })
+
+  const bookshelfDiv = document.createElement('div');
+  bookshelfDiv.classList.add('bookshelf_div')
+  body.append(myBookshelf.bookshelfRender());
+
+  // Calling the sort function
+  myBookshelf.bookShelfSort()
+  
+  
+  // createBookShelf.addBook()
+//   console.log(myBookshelf.bookShelfSort());
+  // createBookShelf.renderAllBooks();
+  
+  // // Using DOM I selected the button ID I made and set an
+  // // event to it to collect and append the data sumitted
+  // // to create a new book
+  
+  const addBtn = document.querySelector("#addABook");
+  
+  addBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    const newBook = new Book();
+    const inputAuth = document.querySelector("#Author");
+    newBook.author = inputAuth.value
+    const inputLang = document.querySelector("#Language");
+    newBook.language = inputLang.value
+    const inputSubj = document.querySelector("#Subject");
+    newBook.subject = inputSubj.value
+    const inputTitle = document.querySelector("#Title");
+    newBook.title = inputTitle.value
+    
+    myBookshelf.addBook(newBook)
+    newBook.renderBook(newBook)
+
+    console.log(myBookshelf)
+    console.log(newBook)
+
+    // resets the form input box every time the button is clicked
+    inputAuth.value = "";
+    inputLang.value = "";
+    inputSubj.value = "";
+    inputTitle.value = "";
+    // console.log(userBook)
+  });
+  
+  
+  // // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
+  // // const bookImage = document.querySelector('li')
+  
+  // // bookImage.addEventListener('click', function() {
+  // // })
+  

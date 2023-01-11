@@ -1,4 +1,4 @@
-const bookData = [
+export const bookData = [
     {
       author: ["Burroughs, Edgar Rice"],
       language: "en",
@@ -1665,202 +1665,203 @@ const bookData = [
       title: "My twin puppies",
     },
   ];
-  
+
+
   // console.log(Object.keys(bookData))
   
   // // Created this function to retrieve all the books in one go
   // // and then create a variable from that executed function which
   // // I can use to push into bookshelf or directly into the html
   
-  function getAllBooks() {
-    let bookReturn = [];
-    for (let i = 0; i < bookData.length; i++) {
-      let book = bookData[i];
-      bookReturn.push(book);
-    }
-    return bookReturn;
-  }
-  //Raza commentted out
-  const allBooks = getAllBooks();
-  console.log(getAllBooks());
+//   function getAllBooks() {
+//     let bookReturn = [];
+//     for (let i = 0; i < bookData.length; i++) {
+//       let book = bookData[i];
+//       bookReturn.push(book);
+//     }
+//     return bookReturn;
+//   }
+//   //Raza commentted out
+//   const allBooks = getAllBooks();
+//   console.log(getAllBooks());
   
-  class Book {
-    constructor(author, language, subject, title) {
-      this.author = author;
-      this.language = language;
-      this.subject = subject;
-      this.title = title;
-    }
-    // rendering a book
-    renderBook() {
+//   class Book {
+//     constructor(author, language, subject, title) {
+//       this.author = author;
+//       this.language = language;
+//       this.subject = subject;
+//       this.title = title;
+//     }
+//     // rendering a book
+//     renderBook() {
   
-    }
-    // getAllBooks() {
-    //   let bookReturn = [];
-    //   for (let i = 0; i < bookData.length; i++) {
-    //     let book = bookData[i];
-    //     bookReturn.push(book);
-    //   }
-    //   return bookReturn;
-    // }
-  }
+//     }
+//     // getAllBooks() {
+//     //   let bookReturn = [];
+//     //   for (let i = 0; i < bookData.length; i++) {
+//     //     let book = bookData[i];
+//     //     bookReturn.push(book);
+//     //   }
+//     //   return bookReturn;
+//     // }
+//   }
   
-  // //Bookshelf class that has empty constructor because it doesn't really contain any properties
-  class Bookshelf {
-    constructor() {
-      this.books = [];
-    }
+//   // //Bookshelf class that has empty constructor because it doesn't really contain any properties
+//   class Bookshelf {
+//     constructor() {
+//       this.books = [];
+//     }
   
-    //   // created an addBook method here to add book instances
-    //   // into my bookshelf but couldn't get it to work the way I wanted
-    //   // so had to defer to different method
-    addBook(book) {
-      this.books.push(book)
-      // let testBook = new Book('new entry', 'new entry', 'new entry', 'new entry')
-      // let bookList = document.createElement('ul');
-      // let newBook = document.createElement('li');
-      // newBook.innerHTML = testBook.title;
-      // bookList.appendChild(newBook);
-      // document.body.appendChild(bookList)
-    }
+//     //   // created an addBook method here to add book instances
+//     //   // into my bookshelf but couldn't get it to work the way I wanted
+//     //   // so had to defer to different method
+//     addBook(book) {
+//       this.books.push(book)
+//       // let testBook = new Book('new entry', 'new entry', 'new entry', 'new entry')
+//       // let bookList = document.createElement('ul');
+//       // let newBook = document.createElement('li');
+//       // newBook.innerHTML = testBook.title;
+//       // bookList.appendChild(newBook);
+//       // document.body.appendChild(bookList)
+//     }
   
-    // // This function (called later via OOP) appends all the books into individual li's
-    // // from my allBooks variable by cylcing through it with a for loop and appending
-    // // each on into the html file
-    renderAllBooks() {
-      const body = document.querySelector("body");
-      const cardMaker = (aBook) => {
-        console.log(aBook);
-        const container = document.createElement("div");
-        const author = document.createElement("h3");
-        const language = document.createElement("h3");
-        const subject = document.createElement("h3");
-        const title = document.createElement("h3");
-        //make pieces
-        //add content
-        author.innerHTML = aBook.author;
-        language.innerHTML = aBook.language;
-        subject.innerHTML = aBook.subject;
-        title.innerHTML = aBook.title;
-        container.append(author, language, subject, title);
+//     // // This function (called later via OOP) appends all the books into individual li's
+//     // // from my allBooks variable by cylcing through it with a for loop and appending
+//     // // each on into the html file
+//     renderAllBooks() {
+//       const body = document.querySelector("body");
+//       const cardMaker = (aBook) => {
+//         console.log(aBook);
+//         const container = document.createElement("div");
+//         const author = document.createElement("h3");
+//         const language = document.createElement("h3");
+//         const subject = document.createElement("h3");
+//         const title = document.createElement("h3");
+//         //make pieces
+//         //add content
+//         author.innerHTML = aBook.author;
+//         language.innerHTML = aBook.language;
+//         subject.innerHTML = aBook.subject;
+//         title.innerHTML = aBook.title;
+//         container.append(author, language, subject, title);
   
-        return container;
-      };
-      bookData.map((singleObj) => {
-        console.log(singleObj);
-        const card = cardMaker(singleObj);
-        body.append(card);
-      });
-      // let parentEle = document.createElement("div");
-      // let childEle = document.createElement("ul");
-      // parentEle.appendChild(childEle);
+//         return container;
+//       };
+//       bookData.map((singleObj) => {
+//         console.log(singleObj);
+//         const card = cardMaker(singleObj);
+//         body.append(card);
+//       });
+//       // let parentEle = document.createElement("div");
+//       // let childEle = document.createElement("ul");
+//       // parentEle.appendChild(childEle);
   
-      // for (let i = 0; i < allBooks.length; i++) {
-      //   let eachBook = document.createElement("li");
-      //   eachBook.innerHTML = allBooks[i].title;
-      //   childEle.appendChild(eachBook);
-      // }
+//       // for (let i = 0; i < allBooks.length; i++) {
+//       //   let eachBook = document.createElement("li");
+//       //   eachBook.innerHTML = allBooks[i].title;
+//       //   childEle.appendChild(eachBook);
+//       // }
   
-      // document.body.appendChild(parentEle);
-    }
+//       // document.body.appendChild(parentEle);
+//     }
   
-    bookSort(optionSelected){
-      if(optionSelected === "subject"){
-      bookData.sort((a, b)=>{
-        if(a.subject < b.subject){
-          return -1
-        }
-        if(a.subject > b.subject) {
-          return 1
-        }
-        return 0
-      })
-    }
-      if(optionSelected === "language"){
-      bookData.sort((a, b)=>{
-        if(a.language < b.language){
-          return -1
-        }
-        if(a.language > b.language) {
-          return 1
-        }
-        return 0
-      })
-    }
-      if(optionSelected === "title"){
-      bookData.sort((a, b)=>{
-        if(a.title < b.title){
-          return -1
-        }
-        if(a.title > b.title) {
-          return 1
-        }
-        return 0
-      })
-    }
-      else {
-      bookData.sort((a, b)=>{
-        if(a.author < b.author){
-          return -1
-        }
-        if(a.author > b.author) {
-          return 1
-        }
-        return 0
-      })
-    }
-    }
-  }
+//     bookSort(optionSelected){
+//       if(optionSelected === "subject"){
+//       bookData.sort((a, b)=>{
+//         if(a.subject < b.subject){
+//           return -1
+//         }
+//         if(a.subject > b.subject) {
+//           return 1
+//         }
+//         return 0
+//       })
+//     }
+//       if(optionSelected === "language"){
+//       bookData.sort((a, b)=>{
+//         if(a.language < b.language){
+//           return -1
+//         }
+//         if(a.language > b.language) {
+//           return 1
+//         }
+//         return 0
+//       })
+//     }
+//       if(optionSelected === "title"){
+//       bookData.sort((a, b)=>{
+//         if(a.title < b.title){
+//           return -1
+//         }
+//         if(a.title > b.title) {
+//           return 1
+//         }
+//         return 0
+//       })
+//     }
+//       else {
+//       bookData.sort((a, b)=>{
+//         if(a.author < b.author){
+//           return -1
+//         }
+//         if(a.author > b.author) {
+//           return 1
+//         }
+//         return 0
+//       })
+//     }
+//     }
+//   }
   
-  // // Made instance of Bookshelf to then fire off the renderAllBooks function I made within
-  // // which appends each book as a new li
-  // const books = new Book();
-  // books.getAllBooks();
-  const createBookShelf = new Bookshelf();
-  // createBookShelf.addBook()
-  console.log(createBookShelf.bookSort());
-  createBookShelf.renderAllBooks();
+//   // // Made instance of Bookshelf to then fire off the renderAllBooks function I made within
+//   // // which appends each book as a new li
+//   // const books = new Book();
+//   // books.getAllBooks();
+//   const createBookShelf = new Bookshelf();
+//   // createBookShelf.addBook()
+//   console.log(createBookShelf.bookSort());
+//   createBookShelf.renderAllBooks();
   
-  // // Using DOM I selected the button ID I made and set an
-  // // event to it to collect and append the data sumitted
-  // // to create a new book
+//   // // Using DOM I selected the button ID I made and set an
+//   // // event to it to collect and append the data sumitted
+//   // // to create a new book
   
-  const addBtn = document.querySelector("#addABook");
+//   const addBtn = document.querySelector("#addABook");
   
-  addBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    let userBook = [];
-    const inputAuth = document.querySelector("#Author");
-    userBook.push(inputAuth.value);
-    const inputLang = document.querySelector("#Language");
-    userBook.push(inputLang.value);
-    const inputSubj = document.querySelector("#Subject");
-    userBook.push(inputSubj.value);
-    const inputTitle = document.querySelector("#Title");
-    userBook.push(inputTitle.value);
+//   addBtn.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     let userBook = [];
+//     const inputAuth = document.querySelector("#Author");
+//     userBook.push(inputAuth.value);
+//     const inputLang = document.querySelector("#Language");
+//     userBook.push(inputLang.value);
+//     const inputSubj = document.querySelector("#Subject");
+//     userBook.push(inputSubj.value);
+//     const inputTitle = document.querySelector("#Title");
+//     userBook.push(inputTitle.value);
   
-    let userOutput = document.querySelector("#formOutput");
-    let newBookItem = document.createElement("li");
-    newBookItem.innerHTML = userBook;
-    userOutput.appendChild(newBookItem);
+//     let userOutput = document.querySelector("#formOutput");
+//     let newBookItem = document.createElement("li");
+//     newBookItem.innerHTML = userBook;
+//     userOutput.appendChild(newBookItem);
   
-    // resets the form input box every time the button is clicked
-    inputAuth.value = "";
-    inputLang.value = "";
-    inputSubj.value = "";
-    inputTitle.value = "";
-    // console.log(userBook)
-  });
+//     // resets the form input box every time the button is clicked
+//     inputAuth.value = "";
+//     inputLang.value = "";
+//     inputSubj.value = "";
+//     inputTitle.value = "";
+//     // console.log(userBook)
+//   });
   
-// ***********SORTING*************
-  const sortingSelection = document.getElementById("sort");
-  sortingSelection.addEventListener("change", function() {
-    bookSort(sortingSelection.value)
-});
+// // ***********SORTING*************
+//   const sortingSelection = document.getElementById("sort");
+//   sortingSelection.addEventListener("change", function() {
+//     bookSort(sortingSelection.value)
+// });
 
-  // // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
-  // // const bookImage = document.querySelector('li')
+//   // // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
+//   // // const bookImage = document.querySelector('li')
   
-  // // bookImage.addEventListener('click', function() {
-  // // })
+//   // // bookImage.addEventListener('click', function() {
+//   // // })
   
