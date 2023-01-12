@@ -9,36 +9,36 @@
 </head>
 <body>
     <!-- main headers for name of bookshelf and where to add books -->
-    <h1>ERIK'S BOOKSHELF</h1>
-    <h3>ADD YOUR BOOKS HERE</h3>
+    <nav>
+        <h1>ERIK'S BOOKSHELF</h1>
+    </nav>
     <!-- made a separate container for the forms so I could style it properly -->
-    <div id="formBox">
-        <form type="submit">
-            <label for="Author">Author</label>
-            <input type="text" name="Author" id="Author">
-            <label for="Language">Language</label>
-            <input type="text" name="Language" id="Language">
-            <label for="Subject">Subject</label>
-            <input type="text" name="Subject" id="Subject">
-            <label for="Title">Title</label>
-            <input type="text" name="Title" id="Title">
-            <button id="addABook">ADD BOOK</button>
-        </form>
-    </div>
-    <label for="sort">Selection for Sorting</label>
-    <select name="sorting" id="sort">
-        <option value="author" selected>Author</option>
-        <option value="subject">Subject</option>
-        <option value="language">Language</option>
-        <option value="title">Title</option>
-    </select>
-    <button id="sort-button">Sort Author</button>
-    <!-- new ul and li's are appended here from the js file 
-    each li represents a book but only displays the title on the page -->
+    <div id="mainInputDiv">
+        <h3>ADD YOUR BOOKS HERE</h3>
+        <div id="formBox">
+            <form type="submit">
+                <!-- <label for="Author">Author</label> -->
+                <input type="text" placeholder="Author" name="Author" id="Author">
+                <!-- <label for="Language">Language</label> -->
+                <input type="text" placeholder="Language" name="Language" id="Language">
+                <!-- <label for="Subject">Subject</label> -->
+                <input type="text" placeholder="Subject" name="Subject" id="Subject">
+                <!-- <label for="Title">Title</label> -->
+                <input type="text" placeholder="Title" name="Title" id="Title">
+                <button id="addABook">ADD BOOK</button>
+            </form>
+        </div>
+        <!-- <label class="sort" for="sort">Sort By:</label> -->
+        <select name="sorting" id="sort">
+            <option id="makeSelect" value="-Order Your Books-" selected disable hidden>- Sort Your Books -</option>
+            <option id="authSort" value="author">Author</option>
+            <option id="subjSort" value="subject">Subject</option>
+            <option value="language">Language</option>
+            <option value="title">Title</option>
 
-    <!-- here I've manually made a new ul to have the new books I'm adding
-    exist in a separate container in case I need to have separate access -->
-    <ul id="formOutput"></ul>
+        </select>
+    </div>
+  
     <script type="module" src="js/index.js"></script>
 </body>
 </html>

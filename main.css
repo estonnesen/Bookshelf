@@ -2,8 +2,49 @@
 have a solid background to it like the spine of a book would */
 /* Employed my knowledge of CSS so far to get my desired results */
 
+nav{
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    border: solid 1px black;
+    position: fixed;
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(7px);
+
+}
+
+#mainInputDiv {
+    margin-top: 78px;
+    margin-left: 25px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: solid 1px black; */
+    /* background-color: lightgray; */
+    backdrop-filter: blur(15px);
+    /* opacity: .5; */
+    left: 0;
+    width: 300px;
+    position: fixed;
+    padding: 20px;
+}
+
 body{
-    background-color: lightgrey;
+    display: flex;
+    justify-content: right;
+    background-image: url(./images/library.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.books-container{
+    margin-top: 100px;
+    width: 70%;
 }
 
 h1{
@@ -12,29 +53,36 @@ h1{
 }
 
 h3{
-    margin-left: 50px;
+    /* margin-left: 50px; */
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 #formBox{
     display: flex;
     padding: 20px;
-    background-color: grey;
+    background-color: lightblue;
+    border-radius: 2px;
+    /* opacity: .7; */
     border: solid black 1px;
     width: 200px;
-    margin-left: 50px;
-    justify-content: left;
+    /* margin-left: 50px; */
+    justify-content: right;
     margin-bottom: 25px;
 }
 
 form{
     display: flex;
-    color: white;
+    color: black;
     width: 250px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     flex-direction: column;
     justify-content: center;
+}
+
+#Author, #Language, #Subject, #Title{
+    margin-bottom: 10px;
 }
 
 
@@ -55,27 +103,76 @@ ul{
 li{
     display: flex;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:'Chalkduster';
+    border-bottom: 2px solid blue;
+    font-size: 18px;
+    /* text-shadow: 2px 2px 2px rgba(0, 0, 0.1, 0); */
     /* font-size: large; */
     /* font-weight: bolder; */
     /* text-transform: uppercase; */
     list-style: none;
-    background-color: orange;
-    border: solid brown 1px;
-    box-shadow: 2px 2px grey;
+    /* background-color: orange; */
+    /* border: solid brown 1px; */
+    /* box-shadow: 2px 2px grey; */
     /* min-height: 22px; */
     padding: 5px;
     /* min-width: 250px; */
     /* width: 45%; */
     margin: 5px;
 }
+
 .new-container{
-    background-color: antiquewhite;
-    border: solid 1px black;
+    /* background-color: antiquewhite; */
+    /* border: solid 1px black; */
+    display:inline-block;
+    border-radius: 3px;
     padding: 10px;
+    /* backdrop-filter: blur(7px); */
+    font-size: 15px;
+    width: 500px;
+    background-image: url(./images/card.jpg);
+    background-size: cover;
+    /* box-shadow: 3px 3px lightblue; */
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .4);
+}
+
+.comments{
+    display: inline-block;
+    width: 500px;
+    border-bottom: red 3px solid;
+}
+
+.commentBtn{
+    height: 20px;
+    width: 100px;
+    margin: 10px;
+}
+
+p{
+    font-size: 15px;
+    color: green;
+    margin-inline: 10px;
+    font-family: 'Chalkduster';
+    display: flex;
+    justify-content: right;
 }
 
 .dropdown {
     display: inline-block;
     position: relative;
+    margin-bottom: 10px;
   }
+
+#sort{
+    /* justify-content: right; */
+    /* margin-left: 65px; */
+    margin-bottom: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    width: 200px;
+    text-align: center;
+}
+
+.comment-input{
+    width: 300px;
+}
