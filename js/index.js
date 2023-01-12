@@ -22,6 +22,7 @@ class Bookshelf {
         booksContainer.append(newContainer)
 
         // Create comment button for each new div that's rendered
+        // made this a function thinking I might need to call it outside of bookshelfRender but I didn't need to
           const addComment = () => {
               const commentBtn = document.createElement('button')
               const commentDiv = document.createElement('div')
@@ -34,14 +35,14 @@ class Bookshelf {
               commentBtn.addEventListener('click', () => {
                   const inputField = document.createElement('input')
                   inputField.classList.add('comment-input')
-                  inputField.setAttribute("placeholder", "Comment Here and press ENTER")
+                  inputField.setAttribute("placeholder", "Comment and Press ENTER (280 Char Max)")
                   inputField.setAttribute("maxlength", 280)
                   commentDiv.append(inputField)
                 //   console.log(inputField)
 
                   inputField.addEventListener('keypress', (e) => {
                       if (e.key === "Enter") {
-                          const inputText = document.createElement('p')
+                          const inputText = document.createElement('li')
                           inputText.classList.add('inputText')
                           inputText.innerText = inputField.value
                           commentDiv.append(inputText)
@@ -58,20 +59,42 @@ class Bookshelf {
         addComment()
 
   
-        const authorLi = document.createElement('li')
-        authorLi.classList.add('author')
-        authorLi.innerText = `AUTHOR: ${eachBook.author}` 
-        newContainer.appendChild(authorLi)
+        const authorUl = document.createElement('ul') // ul container for multiple items in author array
+        authorUl.classList.add('author')
+        authorUl.innerText = `AUTHOR: `// ${eachBook.author}` 
+        newContainer.appendChild(authorUl)
+
+        // attempting to break out each item from author array
+        const bookAuthor = eachBook.author
+            for(let i = 0; i < bookAuthor.length; i++){
+                let eachAuthor = bookAuthor[i]
+                // console.log(bookAuthor)
+                const authorLi = document.createElement('li')
+                authorLi.innerText = eachAuthor
+                authorUl.appendChild(authorLi)
+            }
+          
   
         const languageLi = document.createElement('li')
         languageLi.classList.add('language')
         languageLi.innerText = `LANGUAGE: ${eachBook.language}`
         newContainer.appendChild(languageLi)
   
-        const subjectLi = document.createElement('li')
-        subjectLi.classList.add('subject')
-        subjectLi.innerText = `SUBJECT: ${eachBook.subject}`
-        newContainer.appendChild(subjectLi)
+        const subjectUl = document.createElement('ul') // ul container for multiple items in subject array
+        subjectUl.classList.add('subject')
+        subjectUl.innerText = `SUBJECT: ` // ${eachBook.subject}
+        newContainer.appendChild(subjectUl)
+
+        // attempting to break out each item from subject array
+        const bookSubject = eachBook.subject
+            for(let i = 0; i < bookSubject.length; i++){
+                let eachSubject = bookSubject[i]
+                const subjectli = document.createElement('li')
+                subjectli.innerText = eachSubject
+                subjectUl.appendChild(subjectli)
+            }
+  
+
   
         const titleLi = document.createElement('li')
         titleLi.classList.add('title')
@@ -135,15 +158,19 @@ class Bookshelf {
       }
   }
 
+
   class Book {
     constructor(author, language, subject, title) {
+      this.comment = [];
       this.author = author;
       this.language = language;
       this.subject = subject;
       this.title = title;
-    //   this.comment = []
     }
     
+    addComment(comment) {
+      this.comment.push(comment)
+    }
     // rendering a NEW book
     // ******REDUNDANT*****
     //   renderBook(eachBook) {

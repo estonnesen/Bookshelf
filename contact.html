@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+<body id="contactBody">
+    <nav>
+        <h1><a href="index.html">ERIK'S BOOKSHELF</a></h1>
+        <span>
+            <h4><a href="about.html">ABOUT</a></h4>
+            <h4><a href="contact.html">CONTACT</a></h4>
+        </span>
+    </nav>
+    <div class="contactDiv">
+        <h2>CONTACT US</h2>
+        <form class="contactForm" action="submit">
+            <div id="name">
+                <input id= "name-input" class="contactInput" placeholder="Name" type="text">
+            </div>
+            <div id="address">
+                <input class="contactInput" id="street" placeholder="Street" type="text">
+                <input class="contactInput" id="apt" placeholder="Apt" type="text">
+                <input class="contactInput" id="city" placeholder="City" type="text">
+                <input class="contactInput" id="state" maxlength="2" placeholder="State" type="text">
+                <input class="contactInput" id="zip" maxlength="5" placeholder="Zip" type="text">
+            </div>
+            <div id="contact">
+                <input class="contactInput" placeholder="Email" type="text">
+                <input class="contactInput" placeholder="Phone" type="text">
+            </div>
+            <div id="submit">
+                <!-- <input class="contactInput" id="submit-input" placeholder="Type out your comments here." type="text"> -->
+                <textarea class="contactInput" id="submit-input" placeholder="Type out your comments here." name="comment" id="" cols="20" rows="10"></textarea>
+            </div>
+        </form>
+        <button id="contact-button">Submit Your Information</button>
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+</html>

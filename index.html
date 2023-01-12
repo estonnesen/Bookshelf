@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="main.css">
     <meta charset="UTF-8">
@@ -7,10 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+
+<body id="indexBody">
     <!-- main headers for name of bookshelf and where to add books -->
     <nav>
-        <h1>ERIK'S BOOKSHELF</h1>
+        <h1><a href="index.html">ERIK'S BOOKSHELF</a></h1>
+        <span>
+            <h4><a href="about.html">ABOUT</a></h4>
+            <h4><a href="contact.html">CONTACT</a></h4>
+        </span>
+        </span>
     </nav>
     <!-- made a separate container for the forms so I could style it properly -->
     <div id="mainInputDiv">
@@ -32,13 +39,13 @@
         <select name="sorting" id="sort">
             <option id="makeSelect" value="-Order Your Books-" selected disable hidden>- Sort Your Books -</option>
             <option id="authSort" value="author">Author</option>
-            <option id="subjSort" value="subject">Subject</option>
             <option value="language">Language</option>
+            <option id="subjSort" value="subject">Subject</option>
             <option value="title">Title</option>
-
         </select>
     </div>
-  
+
     <script type="module" src="js/index.js"></script>
 </body>
+
 </html>
