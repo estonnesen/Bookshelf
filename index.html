@@ -23,7 +23,7 @@
     <div id="mainInputDiv">
         <h3>ADD YOUR BOOKS HERE</h3>
         <div id="formBox">
-            <form type="submit">
+            <form class="addBookForm" type="submit">
                 <!-- <label for="Author">Author</label> -->
                 <input type="text" placeholder="Author" name="Author" id="Author">
                 <!-- <label for="Language">Language</label> -->
@@ -44,7 +44,16 @@
             <option value="title">Title</option>
         </select>
     </div>
-
+    <!-- registratioin div -->
+    <div class="registration">
+        <h2>REGISTER TO SEE BOOKS</h2>
+        <form class="regForm" type="submit">
+            <input class="regClass" placeholder="User Name" type="text">
+            <input class="regClass" placeholder="Password" type="text">
+            <input class="regClass" placeholder="Email" type="text">
+        </form>
+        <button id="submitBtn">SUBMIT</button>
+    </div>
     <script type="module" src="js/index.js"></script>
 </body>
 

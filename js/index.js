@@ -22,49 +22,67 @@ class Bookshelf {
         booksContainer.append(newContainer)
 
         // Create comment button for each new div that's rendered
-        // made this a function thinking I might need to call it outside of bookshelfRender but I didn't need to
-          const addComment = () => {
-              const commentBtn = document.createElement('button')
-              const commentDiv = document.createElement('div')
-              commentDiv.classList.add('comments')
-              commentBtn.classList.add('commentBtn')
-              commentBtn.innerText = "Comment"
-              commentDiv.append(commentBtn)
-              newContainer.appendChild(commentDiv)
 
-              commentBtn.addEventListener('click', () => {
-                  const inputField = document.createElement('input')
-                  inputField.classList.add('comment-input')
-                  inputField.setAttribute("placeholder", "Comment and Press ENTER (280 Char Max)")
-                  inputField.setAttribute("maxlength", 280)
-                  commentDiv.append(inputField)
-                //   console.log(inputField)
+        const commentBtn = document.createElement('button')
+        const commentDiv = document.createElement('div')
+        commentDiv.classList.add('comments')
+        commentBtn.classList.add('commentBtn')
+        commentBtn.innerText = "Comment"
+        commentDiv.append(commentBtn)
+        newContainer.appendChild(commentDiv)
 
-                  inputField.addEventListener('keypress', (e) => {
-                      if (e.key === "Enter") {
-                          const inputText = document.createElement('li')
-                          inputText.classList.add('inputText')
-                          inputText.innerText = inputField.value
-                          commentDiv.append(inputText)
+        // create comment elements after button is clicked
+        const commentUl = document.createElement('ul')
+        commentUl.classList.add('comment')
+        commentDiv.appendChild(commentUl)
 
-                          inputField.value = "" // sets input field empty again
-                        //   inputField.disabled = true
-                      }
-                  })
-
-                  commentBtn.disabled = true // this makes it so you can't keep adding input fields (googled this)
-              })
-          }
-        
-        addComment()
-
+        // creating a loop to scan through comment array I added to the Book class
+        // and create DOM for each string at a given index
+        const bookComment = eachBook.comment
+              for(let i = 0; i < bookComment.length; i++){
+                let eachComment = bookComment[i]
+                // console.log(bookAuthor)
+                const commentLi = document.createElement('li')
+                commentLi.classList.add('comment-li')
+                commentLi.innerText = eachComment
+                commentUl.appendChild(commentLi)
+        }
   
+        // this creates the input field when comment button is clicked
+        commentBtn.addEventListener('click', () => {
+          const inputField = document.createElement('input')
+          inputField.classList.add('comment-input')
+          inputField.setAttribute("placeholder", "Comment and Press ENTER (280 Char Max)")
+          inputField.setAttribute("maxlength", 280)
+          commentDiv.append(inputField)
+
+          // this section adds the user input value to the this.books array and re-renders the Bookshelf
+          inputField.addEventListener('keypress', (e) => {
+            if (e.key === "Enter") {
+              // const inputText = document.createElement('li')
+              // inputText.classList.add('inputText')
+              // inputText.innerText = inputField.value
+              const newComment = eachBook.comment
+              newComment.push(`${inputField.value}`)
+              // commentDiv.append(inputText)
+
+              inputField.value = "" // sets input field empty again
+              //   inputField.disabled = true
+              booksContainer.remove() // removes the original book list I rendered
+              myBookshelf.bookshelfRender() // now we re-render the bookshelf
+            }
+          })
+
+          commentBtn.disabled = true // this makes it so you can't keep adding input fields (googled this)
+        })
+
         const authorUl = document.createElement('ul') // ul container for multiple items in author array
         authorUl.classList.add('author')
         authorUl.innerText = `AUTHOR: `// ${eachBook.author}` 
         newContainer.appendChild(authorUl)
 
         // attempting to break out each item from author array
+        // it works!!
         const bookAuthor = eachBook.author
             for(let i = 0; i < bookAuthor.length; i++){
                 let eachAuthor = bookAuthor[i]
@@ -102,10 +120,6 @@ class Bookshelf {
         newContainer.appendChild(titleLi)
       })
       return booksContainer
-    }
-
-    addComment() {
-
     }
     
     // Sorting functions. Not quite sure how to consolidate all this into one function yet...
@@ -161,16 +175,14 @@ class Bookshelf {
 
   class Book {
     constructor(author, language, subject, title) {
-      this.comment = [];
+      this.comment = []; // this we will use to push user input into and re-render when submitted
       this.author = author;
       this.language = language;
       this.subject = subject;
       this.title = title;
     }
-    
-    addComment(comment) {
-      this.comment.push(comment)
-    }
+
+    // ***** OLD WAY I RENDERED THE BOOK ON MY FIRST SUBMISSION  *****
     // rendering a NEW book
     // ******REDUNDANT*****
     //   renderBook(eachBook) {
@@ -210,8 +222,6 @@ class Bookshelf {
     }
   
   
-  // // Made instance of Bookshelf to then fire off the renderAllBooks function I made within
-  // // which appends each book as a new li
 
 //   ***OLD WAY I RENDERED INITIAL BOOKSHELF**
 //   bookData.map((book)=>{
@@ -232,29 +242,28 @@ class Bookshelf {
 //   myBookshelf.bookShelfSort()
   
   
-//   **** ADD BOOK BUTTON SECTION ****
+// ADD BOOK BUTTON SECTION
 
   const addBtn = document.querySelector("#addABook");
   
   addBtn.addEventListener("click", function (event) {
     event.preventDefault();
-    const booksContainer = document.querySelector('.books-container')
+    const booksContainer = document.querySelector('.books-container') // this is targeting the bookshelf DOM we've already rendered
 
     const newBook = new Book();
     const inputAuth = document.querySelector("#Author");
-    newBook.author = inputAuth.value
+    newBook.author = [inputAuth.value]
     const inputLang = document.querySelector("#Language");
     newBook.language = inputLang.value
     const inputSubj = document.querySelector("#Subject");
-    newBook.subject = inputSubj.value
+    newBook.subject = [inputSubj.value]
     const inputTitle = document.querySelector("#Title");
     newBook.title = inputTitle.value
 
     booksContainer.remove() // removes the original book list I rendered
-    myBookshelf.addBook(newBook) // adds to the actual array of books
-    // newBook.renderBook(newBook) // renders new book into html via DOM
-    console.log(myBookshelf)
-    myBookshelf.bookshelfRender() // now we re-render the bookshelf
+    myBookshelf.addBook(newBook) // adds new instance of Book to the actual array of books
+    console.log(myBookshelf) // logging this every time very helpful to check whether data is properly added or not
+    myBookshelf.bookshelfRender() // now we re-render the bookshelf!
 
     // resets the form input box every time the button is clicked
     inputAuth.value = "";
@@ -264,6 +273,8 @@ class Bookshelf {
   });
 
 // const sortBtn = document.querySelector('#sort-button') // used this in earlier versions to test sorting with a button
+
+// SORT DROPDOWN MENU SECTION
 
 const sortingSelection = document.getElementById("sort")
   
@@ -294,11 +305,19 @@ sortingSelection.addEventListener("change", function () {
     console.log(myBookshelf)
 }, false);
 
-// commentBtn.addEventListener('click', ()=>{
-//     console.log('comment button')
-// })
 
-myBookshelf.bookshelfRender()
+// REGISTRATION ATTEMPT
+const regBtn = document.querySelector('#submitBtn')
+const regDiv = document.querySelector('.registration')
+
+regBtn.addEventListener('click', ()=>{
+  regDiv.remove()
+  myBookshelf.bookshelfRender()
+}) 
+
+// INITAL RENDER OF THE NEW BOOKSHELF WITH THE GIVEN BOOK-DATA
+
+// myBookshelf.bookshelfRender()
 
   // // ***EVENTUALLY MAKE A MOUSEOVER TO DISPLAY ALL INFO FOR EACH BOOK****
   // // const bookImage = document.querySelector('li')
