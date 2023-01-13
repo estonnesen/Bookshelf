@@ -56,6 +56,7 @@ class Bookshelf {
           inputField.setAttribute("placeholder", "Comment and Press ENTER (280 Char Max)")
           inputField.setAttribute("maxlength", 280)
           commentDiv.append(inputField)
+          inputField.focus() // googled this trick to set the cursor to my input field after clicking comment button
 
           // this section adds the user input value to the this.books array and re-renders the Bookshelf
           inputField.addEventListener('keypress', (e) => {
@@ -171,8 +172,37 @@ class Bookshelf {
           return 0
         })
       }
+
+    // attempting a search filter
+    // *dind't get very far. brain fried wanted to submit project*
+    bookSearch() {
+      this.books.filter((eachBook)=>{
+        // const bookAuthor = eachBook.author
+        for(let i = 0; i < eachBook.length; i++){
+
+            console.log(eachBook.length)
+        }
+        // return eachBook
+      })
+    }
+    
   }
 
+
+// ***STARTED MESSING WITH SEARCH FUNTION BUT TOO FRIED. WILL REVISIT LATER***
+  const searchBar = document.querySelector('#searchBar')
+
+  searchBar.addEventListener('keypress', (e)=>{
+    if(e.key === "Enter") {
+      // myBookshelf.bookSearch()
+      searchBar.value = ""
+      console.log(myBookshelf)
+    }
+  })
+
+
+  // THIS IS MY BOOK CLASS. STARTED OUT VERY CLUTTERED AND OVER COMPLICATED
+  // finally realized it really just needs the properties and that's about it
 
   class Book {
     constructor(author, language, subject, title) {
@@ -230,11 +260,12 @@ class Bookshelf {
 //   })
 
 
-// RENDER INITIAL BOOKSHELF
+// CREATE INITIAL BOOKSHELF INSTANCE
   const myBookshelf = new Bookshelf();
+// Here we are scanning through the book data anc creating a new Book instance for each object
   bookData.forEach((book)=>{
     book = new Book(book.author, book.language, book.subject, book.title)
-    myBookshelf.addBook(book)
+    myBookshelf.addBook(book) // this takes each book object and pushes it into the Bookshelf array via the function I made in the class
   })
     console.log(myBookshelf)
     // myBookshelf.bookshelfRender()
@@ -293,11 +324,6 @@ class Bookshelf {
       bookForm.reset()
     }
 
-    // if (inputAuth.value !== "" && inputLang.value !== "" && inputSubj.value !== "") {
-    //   const bookForm = document.querySelector('.addBookForm')
-    //   bookForm.reset()
-    // }
-
     console.log(myBookshelf) // logging this every time very helpful to check whether data is properly added or not
     myBookshelf.bookshelfRender() // now we re-render the bookshelf!
 
@@ -306,16 +332,15 @@ class Bookshelf {
     // inputLang.value = "";
     // inputSubj.value = "";
     // inputTitle.value = "";
-    
-
   });
 
 // const sortBtn = document.querySelector('#sort-button') // used this in earlier versions to test sorting with a button
 
 // SORT DROPDOWN MENU SECTION
-
 const sortingSelection = document.getElementById("sort")
   
+// Code here might be a bit redundant but it works. Hopefully next time can figure out a more concise way to
+// have this operate without an if/else statement for each book property
 sortingSelection.addEventListener("change", function () {
     const booksContainer = document.querySelector('.books-container')
     if(this.value === "makeSelect") {
@@ -367,6 +392,7 @@ regBtn.addEventListener('click', ()=>{
 
 
 // INITAL RENDER OF THE NEW BOOKSHELF WITH THE GIVEN BOOK-DATA
+// *** no longer using this render since I added the registration form ***
 
 // myBookshelf.bookshelfRender()
 

@@ -10,12 +10,13 @@
 </head>
 
 <body id="indexBody">
-    <!-- main headers for name of bookshelf and where to add books -->
+    <!-- main nav bar that's copied onto corresponding pages -->
     <nav>
         <h1><a href="index.html">ERIK'S BOOKSHELF</a></h1>
         <span>
             <h4>
-                <input id="searchBar" placeholder="Search" type="text">
+                <!-- SEARCH BAR DOESN'T WORK YET... -->
+                <input id="searchBar" placeholder="Dummy search bar. Out of order..." type="text">
             </h4>
             <h4><a href="about.html">ABOUT</a></h4>
             <h4><a href="contact.html">CONTACT</a></h4>
@@ -37,7 +38,7 @@
                 <button id="addABook">ADD BOOK</button>
             </form>
         </div>
-        <!-- <label class="sort" for="sort">Sort By:</label> -->
+        <!-- this is the drop down menu -->
         <select name="sorting" id="sort">
             <option id="makeSelect" value="-Order Your Books-" selected disable hidden>- Sort Your Books -</option>
             <option id="authSort" value="author">Author</option>
@@ -56,6 +57,7 @@
         </form>
         <button id="submitBtn">SUBMIT</button>
     </div>
+    <!-- everything else is rendered via DOM on the webite when you interact with it -->
     <script type="module" src="js/index.js"></script>
 </body>
 

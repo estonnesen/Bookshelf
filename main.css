@@ -1,6 +1,12 @@
-/* Wanted to have each li that's appended to the html
-have a solid background to it like the spine of a book would */
-/* Employed my knowledge of CSS so far to get my desired results */
+/* Basically ended up going for a skeuomorphism style even tho I'm generally not a huge fan */
+
+/* styling is pretty self explanatory:
+fiddled with a lot of options. went with blurry background effect for most of my submission and content divs */
+
+/* started out a bit unorganized but as time went on you'll see I begane commenting out each section.
+will definitely do that more in the future since it's much easier to target the section you want to edit
+
+also need to develope a more consistent naming system for classes and ids */
 
 nav{
     top: 0;
@@ -62,6 +68,7 @@ h4{
     background-repeat: no-repeat;
 }
 
+/* this is the master books div. set margin so it's down a bit from the nav bar */
 .books-container{
     margin-top: 200px;
     /* margin-left: 280px; */
@@ -127,7 +134,7 @@ button:hover{
     margin: 25px;
 } */
 
-/* CREATE BACKGROUND AND BORDER COLOR FONTS ETC FOR EACH BOOK */
+/* this creates the blue underlines for the index cards */
 .author, .language, .subject, .title {
     display: flex;
     align-items: center;
@@ -149,6 +156,7 @@ button:hover{
     margin: 5px;
 }
 
+/* this is the visual representation of each new book card div. decided to make them look like index cards */
 .new-container{
     /* background-color: antiquewhite; */
     /* border: solid 1px black; */
@@ -353,4 +361,5 @@ h2{
     color: white;
     text-align: left;
     padding-left: 8px;
+    width: 220px;
 }
