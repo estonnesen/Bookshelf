@@ -51,6 +51,7 @@ class Bookshelf {
         // this creates the input field when comment button is clicked
         commentBtn.addEventListener('click', () => {
           const inputField = document.createElement('input')
+
           inputField.classList.add('comment-input')
           inputField.setAttribute("placeholder", "Comment and Press ENTER (280 Char Max)")
           inputField.setAttribute("maxlength", 280)
@@ -251,6 +252,7 @@ class Bookshelf {
     const booksContainer = document.querySelector('.books-container') // this is targeting the bookshelf DOM we've already rendered
 
     const newBook = new Book();
+    
     const inputAuth = document.querySelector("#Author");
     newBook.author = [inputAuth.value]
     const inputLang = document.querySelector("#Language");
@@ -261,15 +263,51 @@ class Bookshelf {
     newBook.title = inputTitle.value
 
     booksContainer.remove() // removes the original book list I rendered
-    myBookshelf.addBook(newBook) // adds new instance of Book to the actual array of books
+
+    // This prevents user from creating a blank card. All fields required
+    // Started setting an alert for each empty field but felt like taking a step further
+    // so changed it to capture user prompt value and redirect that each corresponding input value
+    if(inputAuth.value === "") {
+      const authPrompt = prompt('Please enter an author')
+      if(authPrompt !== null) {
+        inputAuth.value = authPrompt
+      }
+    } else if (inputLang.value === "") {
+      const langPrompt = prompt('Please enter a language')
+      if(langPrompt !== null) {
+        inputLang.value = langPrompt
+      }
+    } else if (inputSubj.value === "") {
+      const subjPrompt = prompt('Please enter a subject')
+      if(subjPrompt !== null) {
+        inputSubj.value = subjPrompt
+      }
+    } else if (inputTitle.value === "") {
+      const titlePrompt = prompt('Please enter a title')
+      if(titlePrompt !== null) {
+        inputTitle.value = titlePrompt
+      }
+    } else {
+      myBookshelf.addBook(newBook) // adds new instance of Book to the actual array of books
+      const bookForm = document.querySelector('.addBookForm')
+      bookForm.reset()
+    }
+
+    // if (inputAuth.value !== "" && inputLang.value !== "" && inputSubj.value !== "") {
+    //   const bookForm = document.querySelector('.addBookForm')
+    //   bookForm.reset()
+    // }
+
     console.log(myBookshelf) // logging this every time very helpful to check whether data is properly added or not
     myBookshelf.bookshelfRender() // now we re-render the bookshelf!
 
     // resets the form input box every time the button is clicked
-    inputAuth.value = "";
-    inputLang.value = "";
-    inputSubj.value = "";
-    inputTitle.value = "";
+    // inputAuth.value = "";
+    // inputLang.value = "";
+    // inputSubj.value = "";
+    // inputTitle.value = "";
+    
+
   });
 
 // const sortBtn = document.querySelector('#sort-button') // used this in earlier versions to test sorting with a button
@@ -310,10 +348,23 @@ sortingSelection.addEventListener("change", function () {
 const regBtn = document.querySelector('#submitBtn')
 const regDiv = document.querySelector('.registration')
 
+// This just triggers the initital rendering of the bookshelf when submit button is clicked
 regBtn.addEventListener('click', ()=>{
   regDiv.remove()
   myBookshelf.bookshelfRender()
 }) 
+
+
+// CONTACT US EVENT LISTENER TO CLEAR DATA WHEN SUBMITTED
+// *** need to put this in it's own .js file ***
+// const contactBtn = document.querySelector('#contact-button')
+// const contactForm = document.querySelector('.contactForm')
+// contactBtn.addEventListener('click', (e)=>{
+//   e.preventDefault()
+//   console.log("hello world")
+//   // contactForm.reset()
+// })
+
 
 // INITAL RENDER OF THE NEW BOOKSHELF WITH THE GIVEN BOOK-DATA
 

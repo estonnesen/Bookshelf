@@ -14,24 +14,26 @@
     <nav>
         <h1><a href="index.html">ERIK'S BOOKSHELF</a></h1>
         <span>
+            <h4>
+                <input id="searchBar" placeholder="Search" type="text">
+            </h4>
             <h4><a href="about.html">ABOUT</a></h4>
             <h4><a href="contact.html">CONTACT</a></h4>
-        </span>
         </span>
     </nav>
     <!-- made a separate container for the forms so I could style it properly -->
     <div id="mainInputDiv">
-        <h3>ADD YOUR BOOKS HERE</h3>
+        <h2>ADD YOUR BOOKS HERE</h2>
         <div id="formBox">
             <form class="addBookForm" type="submit">
                 <!-- <label for="Author">Author</label> -->
-                <input type="text" placeholder="Author" name="Author" id="Author">
+                <input required type="text" placeholder="Author" name="Author" id="Author">
                 <!-- <label for="Language">Language</label> -->
-                <input type="text" placeholder="Language" name="Language" id="Language">
+                <input required type="text" placeholder="Language" name="Language" id="Language">
                 <!-- <label for="Subject">Subject</label> -->
-                <input type="text" placeholder="Subject" name="Subject" id="Subject">
+                <input required type="text" placeholder="Subject" name="Subject" id="Subject">
                 <!-- <label for="Title">Title</label> -->
-                <input type="text" placeholder="Title" name="Title" id="Title">
+                <input required type="text" placeholder="Title" name="Title" id="Title">
                 <button id="addABook">ADD BOOK</button>
             </form>
         </div>
