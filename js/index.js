@@ -372,10 +372,14 @@ sortingSelection.addEventListener("change", function () {
 // REGISTRATION ATTEMPT
 const regBtn = document.querySelector('#submitBtn')
 const regDiv = document.querySelector('.registration')
+const mainInputDiv = document.getElementById('mainInputDiv')
+mainInputDiv.style.display = 'none';
+
 
 // This just triggers the initital rendering of the bookshelf when submit button is clicked
 regBtn.addEventListener('click', ()=>{
   regDiv.remove()
+  mainInputDiv.style.display = 'flex';
   myBookshelf.bookshelfRender()
 }) 
 
