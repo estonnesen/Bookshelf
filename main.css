@@ -109,7 +109,7 @@ h3{
 button{
     margin-top: 10px;
     border-radius: 10px;
-    border: 1px solid grey;
+    border: 1px solid lightgray;
     font-size: small;
     background-color: white;
     text-align: center;
@@ -189,6 +189,7 @@ button:hover{
     width: 100px;
     margin: 10px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, .3);
+    border: solid lightgray 1px;
 }
 
 .comment-li{
